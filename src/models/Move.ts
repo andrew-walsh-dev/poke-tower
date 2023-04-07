@@ -1,8 +1,8 @@
-
+import Type from "./Type";
 
 class Move {
     private name: string;
-    private type: 
+    private type: Type; 
 }
 
 export default Move;

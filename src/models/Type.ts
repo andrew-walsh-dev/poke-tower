@@ -19,4 +19,39 @@ enum Type {
   Fairy = "Fairy",
 }
 
+type Effectiveness = "superEffective" | "notVeryEffective" | "normal" | "immune";
+
+export interface TypeEffectivenessMatrix {
+  [key: string]: {
+    [key: string]: Effectiveness;
+  };
+}
+
+const typeEffectivenessMatrix: TypeEffectivenessMatrix = {
+  [Type.Normal]: {
+    [Type.Normal]: "normal",
+    [Type.Fire]: "normal",
+    [Type.Water]: "normal",
+    [Type.Grass]: "normal",
+  },
+  [Type.Fire]: {
+    [Type.Normal]: "normal",
+    [Type.Fire]: "notVeryEffective",
+    [Type.Water]: "notVeryEffective",
+    [Type.Grass]: "superEffective",
+  },
+  [Type.Water]: {
+    [Type.Normal]: "normal",
+    [Type.Fire]: "superEffective",
+    [Type.Water]: "notVeryEffective",
+    [Type.Grass]: "notVeryEffective",
+  },
+  [Type.Grass]: {
+    [Type.Normal]: "normal",
+    [Type.Fire]: "notVeryEffective",
+    [Type.Water]: "superEffective",
+    [Type.Grass]: "notVeryEffective",
+  },
+};
+
 export default Type;
