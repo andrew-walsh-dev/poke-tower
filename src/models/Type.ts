@@ -21,13 +21,13 @@ enum Type {
 
 type Effectiveness = "superEffective" | "notVeryEffective" | "normal" | "immune";
 
-export interface TypeEffectivenessMatrix {
+interface TypeEffectivenessMatrix {
   [key: string]: {
     [key: string]: Effectiveness;
   };
 }
 
-const typeEffectivenessMatrix: TypeEffectivenessMatrix = {
+export const typeEffectivenessMatrix: TypeEffectivenessMatrix = {
   [Type.Normal]: {
     [Type.Normal]: "normal",
     [Type.Fire]: "normal",
