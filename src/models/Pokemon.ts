@@ -24,6 +24,10 @@ class Pokemon {
         this.sprite = sprite;
     }
 
+    public getMaxHP() {
+        return this.maxHP;
+    }
+
     public getType(): Type {
         return this.type;
     }
