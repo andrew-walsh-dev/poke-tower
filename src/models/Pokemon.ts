@@ -23,6 +23,29 @@ class Pokemon {
         this.level = level;
         this.sprite = sprite;
     }
+
+    public getType(): Type {
+        return this.type;
+    }
+
+    public getAttack(): number {
+        return this.attack;
+    }
+
+    public getMoveset(): Move[] {
+        return this.moveset;
+    }
+
+    public isFainted(): boolean {
+        return this.currentHP <= 0;
+    }
+
+    public takeDamage(amount: number): void {
+        this.currentHP -= amount;
+        if (this.currentHP < 0) {
+            this.currentHP = 0;
+        }
+    }
 }
 
 export default Pokemon;
