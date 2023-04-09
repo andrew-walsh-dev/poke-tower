@@ -22,6 +22,15 @@ class Move {
   }
 
   /**
+   * Returns the name of this move.
+   *
+   * @returns The name of this move.
+   */
+  public getName(): string {
+    return this.name;
+  }
+
+  /**
    * Returns the type of this move.
    *
    * @returns The type of the move, as specified by the Type enum.
