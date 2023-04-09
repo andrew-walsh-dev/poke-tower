@@ -4,7 +4,11 @@ import Move from '../models/Move';
 import Pokemon from '../models/Pokemon';
 import Type from '../models/Type';
 
-export default function ChooseStarter({ setStarter }): JSX.Element {
+interface StarterProps {
+    setStarter: (pokemon: Pokemon) => void;
+}
+
+export default function ChooseStarter({ setStarter }: StarterProps): JSX.Element {
     const starterPokemon: Pokemon[] = generateStarters();
     const navigate = useNavigate();
 
@@ -67,7 +71,7 @@ function generateStarters(): Pokemon[] {
         1,
         0,
         1,
-        ""
+        "https://img.pokemondb.net/sprites/scarlet-violet/normal/pikachu.png"
     );
     const scratch: Move = new Move("Scratch", Type.Normal, 10);
     const ember: Move = new Move("Ember", Type.Fire, 15);
@@ -79,7 +83,7 @@ function generateStarters(): Pokemon[] {
         1,
         0,
         1,
-        ""
+        "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png"
     );
     const tackle: Move = new Move("Tackle", Type.Normal, 10);
     const vineWhip: Move = new Move("Vine Whip", Type.Grass, 15);
@@ -91,7 +95,7 @@ function generateStarters(): Pokemon[] {
         1,
         0,
         1,
-        ""
+        "https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png"
     );
     const waterGun: Move = new Move("Water Gun", Type.Water, 15);
     const squirtle: Pokemon = new Pokemon(
@@ -102,7 +106,7 @@ function generateStarters(): Pokemon[] {
         1,
         0,
         1,
-        ""
+        "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png"
     );
     return [pikachu, charmander, bulbasaur, squirtle];
 }

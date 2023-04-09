@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import Game from '../models/Game';
+import Pokemon from '../models/Pokemon';
 
-export default function Home(): JSX.Element {
+interface HomeProps {
+    party: Pokemon[];
+}
+
+export default function Home({ party }: HomeProps): JSX.Element {
     return (
         <div>
-            <Link to="/starter" style={{ textDecoration: 'none' }}>
-                <Button variant="contained" color="primary">
-                    Choose a starter pokemon
-                </Button>
-            </Link>
+            {party.length === 0 && (
+                <Link to="/starter" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="primary">
+                        Choose a starter pokemon
+                    </Button>
+                </Link>
+            )}
+            {party.length > 0 && (
+                <Link to="/party" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="primary">
+                        View your party
+                    </Button>
+                </Link>
+            )}
         </div>
     );
 }
