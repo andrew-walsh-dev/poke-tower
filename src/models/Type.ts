@@ -19,14 +19,25 @@ enum Type {
   Fairy = "Fairy",
 }
 
+/**
+ * Type effectiveness values used in the typeEffectivenessMatrix.
+ */
 type Effectiveness = "superEffective" | "notVeryEffective" | "normal" | "immune";
 
+/**
+ * Represents a matrix that describes the effectiveness of one type of move against another type.
+ * Keys are attacker types, and values are objects with defender types as keys and effectiveness as values.
+ */
 interface TypeEffectivenessMatrix {
   [key: string]: {
     [key: string]: Effectiveness;
   };
 }
 
+/**
+ * The type effectiveness matrix, describing the effectiveness of one type of move against another type.
+ * The keys represent the attacker's type, and the values are objects with the defender's type as keys and effectiveness as values.
+ */
 export const typeEffectivenessMatrix: TypeEffectivenessMatrix = {
   [Type.Normal]: {
     [Type.Normal]: "normal",
