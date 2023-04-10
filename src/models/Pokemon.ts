@@ -68,6 +68,15 @@ class Pokemon {
   }
 
   /**
+   * Increases the Pokemon's level by 1 and updates its exp to the next required amount.
+   */
+  public levelUp(): void {
+    const nextLevelExp = Pokemon.expForLevel(this.level + 1);
+    this.level += 1;
+    this.exp = nextLevelExp;
+  }
+
+  /**
    * Retrieves all Pokémon from the JSON data and converts them into Pokemon objects.
    * @param moves A Map containing all the Move objects, keyed by their names.
    * @returns An array of Pokemon objects representing all the Pokémon in the JSON data.

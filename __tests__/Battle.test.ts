@@ -23,6 +23,8 @@ describe("Battle", () => {
       50,
       0,
       1,
+      false,
+      { min: 1, max: 10 },
       "player1.png"
     );
     const playerPokemon2 = new Pokemon(
@@ -33,6 +35,8 @@ describe("Battle", () => {
       100,
       0,
       1,
+      false,
+      { min: 1, max: 10 },
       "player2.png"
     );
     const opponentPokemon1 = new Pokemon(
@@ -43,6 +47,8 @@ describe("Battle", () => {
       50,
       0,
       1,
+      false,
+      { min: 1, max: 10 },
       "opponent1.png"
     );
     const opponentPokemon2 = new Pokemon(
@@ -53,6 +59,8 @@ describe("Battle", () => {
       100,
       0,
       1,
+      false,
+      { min: 1, max: 10 },
       "opponent2.png"
     );
 
