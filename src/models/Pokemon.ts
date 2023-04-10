@@ -15,6 +15,7 @@ class Pokemon {
   private exp: number;
   private level: number;
   private isStarter: boolean;
+  private floorRange: { min: number; max: number };
   private sprite: string;
 
   /**
@@ -39,6 +40,7 @@ class Pokemon {
     exp: number,
     level: number,
     isStarter: boolean,
+    floorRange: { min: number; max: number },
     sprite: string
   ) {
     this.name = name;
@@ -50,9 +52,26 @@ class Pokemon {
     this.exp = exp;
     this.level = level;
     this.isStarter = isStarter;
+    this.floorRange = floorRange;
     this.sprite = sprite;
   }
 
+  /**
+   * Calculates the experience needed for a given level using a cubic formula.
+   *
+   * @param level - The target level for which the experience threshold is being calculated.
+   * @returns The experience needed to reach the specified level.
+   *
+   */
+  public static expForLevel(level: number): number {
+    return Math.floor(level ** 3 / 2);
+  }
+
+  /**
+   * Retrieves all Pokémon from the JSON data and converts them into Pokemon objects.
+   * @param moves A Map containing all the Move objects, keyed by their names.
+   * @returns An array of Pokemon objects representing all the Pokémon in the JSON data.
+   */
   public static getAll(moves: Map<string, Move>): Pokemon[] {
     const pokemonList: Pokemon[] = [];
     for (const pokemonDatum of pokemonData) {
@@ -68,6 +87,7 @@ class Pokemon {
         pokemonDatum.exp,
         pokemonDatum.level,
         pokemonDatum.isStarter,
+        pokemonDatum.floorRange,
         pokemonDatum.sprite
       );
       pokemonList.push(pokemon);
@@ -75,6 +95,11 @@ class Pokemon {
     return pokemonList;
   }
 
+  /**
+   * Retrieves all starter Pokémon from the JSON data and converts them into Pokemon objects.
+   * @param moves A Map containing all the Move objects, keyed by their names.
+   * @returns An array of Pokemon objects representing all the starter Pokémon in the JSON data.
+   */
   public static getStarters(moves: Map<string, Move>): Pokemon[] {
     const allPokemon = this.getAll(moves);
     const starters = allPokemon.filter((pokemon) => pokemon.getIsStarter());
@@ -82,6 +107,16 @@ class Pokemon {
   }
 
   // Getters
+
+  /**
+   * Returns the range of floors the enemy can appear on.
+   *
+   * @returns An object containing the min and max floors the Pokemon can spawn on.
+   */
+  public getFloorRange(): { min: number; max: number } {
+    return this.floorRange;
+  }
+
   /**
    * Returns the name of the Pokemon.
    *

@@ -5,9 +5,10 @@ import Pokemon from '../models/Pokemon';
 
 interface HomeProps {
     party: Pokemon[];
+    play: () => void;
 }
 
-export default function Home({ party }: HomeProps): JSX.Element {
+export default function Home({ party, play }: HomeProps): JSX.Element {
     return (
         <div>
             {party.length === 0 && (
@@ -18,11 +19,21 @@ export default function Home({ party }: HomeProps): JSX.Element {
                 </Link>
             )}
             {party.length > 0 && (
-                <Link to="/party" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" color="primary">
-                        View your party
+                <div>
+                    <Link to="/party" style={{ textDecoration: 'none' }}>
+                        <Button variant="contained" color="primary">
+                            View your party
+                        </Button>
+                    </Link>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => play()}
+                        style={{ marginLeft: '10px' }}
+                    >
+                        Start Battle
                     </Button>
-                </Link>
+                </div>
             )}
         </div>
     );
