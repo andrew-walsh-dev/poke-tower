@@ -1,0 +1,230 @@
+[
+  {
+    "name": "Pikachu",
+    "type": "Electric",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "isStarter": true,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/pikachu.png",
+    "floorRange": {
+      "min": 90,
+      "max": 100
+    },
+    "moves": ["Quick Attack", "Thunderbolt"]
+  },
+  {
+    "name": "Charmander",
+    "type": "Fire",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "isStarter": true,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png",
+    "floorRange": {
+      "min": 90,
+      "max": 100
+    },
+    "moves": ["Scratch", "Ember"]
+  },
+  {
+    "name": "Bulbasaur",
+    "type": "Grass",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "isStarter": true,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png",
+    "floorRange": {
+      "min": 90,
+      "max": 100
+    },
+    "moves": ["Tackle", "Vine Whip"]
+  },
+  {
+    "name": "Squirtle",
+    "type": "Water",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "isStarter": true,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png",
+    "floorRange": {
+      "min": 90,
+      "max": 100
+    },
+    "moves": ["Tackle", "Water Gun"]
+  },
+  {
+    "name": "Rattata",
+    "type": "Normal",
+    "maxHP": 25,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/rattata.png",
+    "floorRange": {
+      "min": 1,
+      "max": 10
+    },
+    "moves": ["Tackle", "Quick Attack"]
+  },
+  {
+    "name": "Pidgey",
+    "type": "Normal",
+    "maxHP": 28,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/pidgey.png",
+    "floorRange": {
+      "min": 1,
+      "max": 10
+    },
+    "moves": ["Tackle", "Gust"]
+  },
+  {
+    "name": "Caterpie",
+    "type": "Bug",
+    "maxHP": 20,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/caterpie.png",
+    "floorRange": {
+      "min": 1,
+      "max": 10
+    },
+    "moves": ["Tackle", "String Shot"]
+  },
+  {
+    "name": "Weedle",
+    "type": "Bug",
+    "maxHP": 22,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/weedle.png",
+    "floorRange": {
+      "min": 1,
+      "max": 10
+    },
+    "moves": ["Poison Sting", "String Shot"]
+  },
+  {
+    "name": "Zubat",
+    "type": "Poison",
+    "maxHP": 25,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/zubat.png",
+    "floorRange": {
+      "min": 11,
+      "max": 20
+    },
+    "moves": ["Leech Life", "Supersonic"]
+  },
+  {
+    "name": "Geodude",
+    "type": "Rock",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/geodude.png",
+    "floorRange": {
+      "min": 11,
+      "max": 20
+    },
+    "moves": ["Tackle", "Rock Throw"]
+  },
+  {
+    "name": "Paras",
+    "type": "Bug",
+    "maxHP": 25,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/paras.png",
+    "floorRange": {
+      "min": 11,
+      "max": 20
+    },
+    "moves": ["Scratch", "Stun Spore"]
+  },
+  {
+    "name": "Diglett",
+    "type": "Ground",
+    "maxHP": 20,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/diglett.png",
+    "floorRange": {
+      "min": 21,
+      "max": 30
+    },
+    "moves": ["Scratch", "Sand Attack"]
+  },
+  {
+    "name": "Meowth",
+    "type": "Normal",
+    "maxHP": 28,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/meowth.png",
+    "floorRange": {
+      "min": 21,
+      "max": 30
+    },
+    "moves": ["Scratch", "Bite"]
+  },
+  {
+    "name": "Psyduck",
+    "type": "Water",
+    "maxHP": 28,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/psyduck.png",
+    "floorRange": {
+      "min": 21,
+      "max": 30
+    },
+    "moves": ["Scratch", "Water Gun"]
+  },
+  {
+    "name": "Mankey",
+    "type": "Fighting",
+    "maxHP": 28,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/mankey.png",
+    "floorRange": {
+      "min": 21,
+      "max": 30
+    },
+    "moves": ["Low Kick", "Scratch"]
+  },
+  {
+    "name": "Machop",
+    "type": "Fighting",
+    "maxHP": 30,
+    "attack": 1,
+    "exp": 0,
+    "level": 1,
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/machop.png",
+    "floorRange": {
+      "min": 31,
+      "max": 40
+    },
+    "moves": ["Low Kick", "Karate Chop"]
+  }
+]

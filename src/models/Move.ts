@@ -1,4 +1,5 @@
 import Type, { typeEffectivenessMatrix } from "./Type";
+import movesData from "../../data/moves.json";
 
 /**
  * Represents a single move that a Pokemon can use in battle.
@@ -19,6 +20,20 @@ class Move {
     this.name = name;
     this.type = type;
     this.power = power;
+  }
+
+  /**
+   *Loads all the moves from the movesData and returns a Map containing all the moves.
+   *The move names are used as keys, and the Move instances are the values.
+   *@returns A Map containing all the moves with their names as keys and the Move instances as values.
+   **/
+  public static getAll(): Map<string, Move> {
+    const moves = new Map<string, Move>();
+    for (const moveData of movesData) {
+      const move = new Move(moveData.name, Type[moveData.type as keyof typeof Type], moveData.power);
+      moves.set(moveData.name, move);
+    }
+    return moves;
   }
 
   /**

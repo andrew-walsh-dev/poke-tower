@@ -1,5 +1,6 @@
 import Move from "./Move";
 import Type from "./Type";
+import pokemonData from "../../data/pokemon.json";
 
 /**
  * Represents a single Pokemon, with its properties, moveset, and battle-related methods.
@@ -13,6 +14,7 @@ class Pokemon {
   private attack: number;
   private exp: number;
   private level: number;
+  private isStarter: boolean;
   private sprite: string;
 
   /**
@@ -25,6 +27,7 @@ class Pokemon {
    * @param attack The attack stat of the Pokemon.
    * @param exp The experience points of the Pokemon.
    * @param level The level of the Pokemon.
+   * @param isStarter Whether the pokemon is a starter option
    * @param sprite The URL of the sprite image for the Pokemon.
    */
   constructor(
@@ -35,6 +38,7 @@ class Pokemon {
     attack: number,
     exp: number,
     level: number,
+    isStarter: boolean,
     sprite: string
   ) {
     this.name = name;
@@ -45,11 +49,39 @@ class Pokemon {
     this.attack = attack;
     this.exp = exp;
     this.level = level;
+    this.isStarter = isStarter;
     this.sprite = sprite;
   }
 
-  // Getters
+  public static getAll(moves: Map<string, Move>): Pokemon[] {
+    const pokemonList: Pokemon[] = [];
+    for (const pokemonDatum of pokemonData) {
+      const moveset = pokemonDatum.moves.map(
+        (moveName: string) => moves.get(moveName) as Move
+      );
+      const pokemon = new Pokemon(
+        pokemonDatum.name,
+        Type[pokemonDatum.type as keyof typeof Type],
+        moveset,
+        pokemonDatum.maxHP,
+        pokemonDatum.attack,
+        pokemonDatum.exp,
+        pokemonDatum.level,
+        pokemonDatum.isStarter,
+        pokemonDatum.sprite
+      );
+      pokemonList.push(pokemon);
+    }
+    return pokemonList;
+  }
 
+  public static getStarters(moves: Map<string, Move>): Pokemon[] {
+    const allPokemon = this.getAll(moves);
+    const starters = allPokemon.filter((pokemon) => pokemon.getIsStarter());
+    return starters;
+  }
+
+  // Getters
   /**
    * Returns the name of the Pokemon.
    *
@@ -120,6 +152,15 @@ class Pokemon {
    */
   public getLevel(): number {
     return this.level;
+  }
+
+  /**
+   * Returns starter availability of this Pokemon.
+   *
+   * @returns The starter availability of the Pokemon.
+   */
+  public getIsStarter(): boolean {
+    return this.isStarter;
   }
 
   /**

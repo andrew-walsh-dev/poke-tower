@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { Card, CardActionArea, CardContent, Typography, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Move from '../models/Move';
 import Pokemon from '../models/Pokemon';
@@ -9,7 +9,8 @@ interface StarterProps {
 }
 
 export default function ChooseStarter({ setStarter }: StarterProps): JSX.Element {
-    const starterPokemon: Pokemon[] = generateStarters();
+    const moves: Map<string, Move> = Move.getAll();
+    const starterPokemon: Pokemon[] = Pokemon.getStarters(moves);
     const navigate = useNavigate();
 
     const handleCardClick = (pokemon: Pokemon) => {
@@ -32,10 +33,16 @@ export default function ChooseStarter({ setStarter }: StarterProps): JSX.Element
                 {starterPokemon.map((pokemon, index) => (
                     <Card
                         key={index}
-                        sx={{ flexGrow: 1, flexBasis: '30%', margin: '1rem' }}
+                        sx={{ flexGrow: 1, flexBasis: '20%', margin: '1rem' }}
                         onClick={() => handleCardClick(pokemon)}
                     >
                         <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="400"
+                                image={pokemon.getSprite()}
+                                alt={pokemon.getName()}
+                            />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
                                     {pokemon.getName()}
@@ -58,56 +65,5 @@ export default function ChooseStarter({ setStarter }: StarterProps): JSX.Element
             </div>
         </>
     );
-}
-
-function generateStarters(): Pokemon[] {
-    const quickAttack: Move = new Move("Quick Attack", Type.Normal, 5);
-    const thunderbolt: Move = new Move("Thunderbolt", Type.Electric, 15);
-    const pikachu: Pokemon = new Pokemon(
-        "Pikachu",
-        Type.Electric,
-        [quickAttack, thunderbolt],
-        30,
-        1,
-        0,
-        1,
-        "https://img.pokemondb.net/sprites/scarlet-violet/normal/pikachu.png"
-    );
-    const scratch: Move = new Move("Scratch", Type.Normal, 10);
-    const ember: Move = new Move("Ember", Type.Fire, 15);
-    const charmander: Pokemon = new Pokemon(
-        "Charmander",
-        Type.Fire,
-        [scratch, ember],
-        30,
-        1,
-        0,
-        1,
-        "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png"
-    );
-    const tackle: Move = new Move("Tackle", Type.Normal, 10);
-    const vineWhip: Move = new Move("Vine Whip", Type.Grass, 15);
-    const bulbasaur: Pokemon = new Pokemon(
-        "Bulbasaur",
-        Type.Grass,
-        [tackle, vineWhip],
-        30,
-        1,
-        0,
-        1,
-        "https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png"
-    );
-    const waterGun: Move = new Move("Water Gun", Type.Water, 15);
-    const squirtle: Pokemon = new Pokemon(
-        "Squirtle",
-        Type.Water,
-        [tackle, waterGun],
-        30,
-        1,
-        0,
-        1,
-        "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png"
-    );
-    return [pikachu, charmander, bulbasaur, squirtle];
 }
 

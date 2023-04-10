@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Quick Attack",
+    "type": "Normal",
+    "power": 5
+  },
+  {
+    "name": "Thunderbolt",
+    "type": "Electric",
+    "power": 15
+  },
+  {
+    "name": "Scratch",
+    "type": "Normal",
+    "power": 10
+  },
+  {
+    "name": "Ember",
+    "type": "Fire",
+    "power": 15
+  },
+  {
+    "name": "Tackle",
+    "type": "Normal",
+    "power": 10
+  },
+  {
+    "name": "Vine Whip",
+    "type": "Grass",
+    "power": 15
+  },
+  {
+    "name": "Water Gun",
+    "type": "Water",
+    "power": 15
+  },
+  {
+    "name": "Gust",
+    "type": "Flying",
+    "power": 12
+  },
+  {
+    "name": "Peck",
+    "type": "Flying",
+    "power": 11
+  },
+  {
+    "name": "Poison Sting",
+    "type": "Poison",
+    "power": 9
+  },
+  {
+    "name": "String Shot",
+    "type": "Bug",
+    "power": 8
+  },
+  {
+    "name": "Leech Life",
+    "type": "Bug",
+    "power": 10
+  },
+  {
+    "name": "Bite",
+    "type": "Dark",
+    "power": 12
+  },
+  {
+    "name": "Low Kick",
+    "type": "Fighting",
+    "power": 11
+  },
+  {
+    "name": "Karate Chop",
+    "type": "Fighting",
+    "power": 13
+  }
+]
