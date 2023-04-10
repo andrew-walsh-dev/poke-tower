@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardActionArea, CardContent, Typography, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Pokemon from '../models/Pokemon';
 
 interface PartyProps {
   party: Pokemon[];
+  healPlayerParty: () => void;
 }
 
-const Party: React.FC<PartyProps> = ({ party }) => {
+const Party: React.FC<PartyProps> = ({ party, healPlayerParty }) => {
   const navigate = useNavigate();
+  const [playerParty, setPlayerParty] = useState(party);
 
   const handleBackClick = () => {
     navigate("/home");
+  };
+
+  const handleHealClick = () => {
+    healPlayerParty();
+    setPlayerParty([...party]);
   };
 
   return (
@@ -26,7 +33,7 @@ const Party: React.FC<PartyProps> = ({ party }) => {
           flexWrap: 'wrap',
         }}
       >
-        {party.map((pokemon, index) => (
+        {playerParty.map((pokemon, index) => (
           <Card key={index} sx={{ maxWidth: 345, margin: '1rem' }}>
             <CardActionArea>
               <CardMedia
@@ -51,7 +58,7 @@ const Party: React.FC<PartyProps> = ({ party }) => {
                   </ul>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Max HP: {pokemon.getMaxHP()}
+                  HP: {pokemon.getCurrentHP()} / {pokemon.getMaxHP()}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Attack: {pokemon.getAttack()}
@@ -68,6 +75,7 @@ const Party: React.FC<PartyProps> = ({ party }) => {
         ))}
       </div>
       <button onClick={handleBackClick}>Back</button>
+      <button onClick={() => handleHealClick()}>Heal Party</button>
     </div>
   );
 };

@@ -54,6 +54,7 @@ class Pokemon {
     this.isStarter = isStarter;
     this.floorRange = floorRange;
     this.sprite = sprite;
+    this.gainExp = this.gainExp.bind(this);
   }
 
   /**
@@ -68,12 +69,47 @@ class Pokemon {
   }
 
   /**
-   * Increases the Pokemon's level by 1 and updates its exp to the next required amount.
+   * Calculates the experience points (EXP) gained for winning a Pokémon battle.
+   *
+   * @param baseExp - The base experience yield.
+   * @param opponentLevel - The level of the defeated Pokémon.
+   * @returns The amount of EXP gained by the winning Pokémon.
+   */
+  public static calculateExpGained(
+    baseExp: number,
+    opponentLevel: number
+  ): number {
+    const expGained = (baseExp * opponentLevel) / 7;
+    return Math.floor(expGained) + 1;
+  }
+
+  /**
+   * Increases the Pokemon's level by 1
    */
   public levelUp(): void {
-    const nextLevelExp = Pokemon.expForLevel(this.level + 1);
-    this.level += 1;
-    this.exp = nextLevelExp;
+    const level: number = this.getLevel();
+    const maxHP: number = this.getMaxHP();
+    const currentHP: number = this.getCurrentHP();
+    const attack: number = this.getAttack();
+    this.setLevel(level + 1);
+    this.setMaxHP(maxHP + 10);
+    this.setCurrentHP(currentHP + 10);
+    this.setAttack(attack + 10);
+  }
+
+  /**
+   * This method is used to increase the experience points (exp) of a Pokémon instance by
+   * the specified amount. The Pokémon's level will be checked after gaining the experience
+   * and leveled up if necessary, which will result in increasing its maxHP and attack.
+   *
+   * @param amount - The amount of experience points to be added to the Pokémon's current exp.
+   */
+  public gainExp(amount: number): void {
+    this.exp += amount;
+    const expForNextLevel: number = Pokemon.expForLevel(this.getLevel() + 1);
+    if (this.getExp() >= expForNextLevel) {
+      this.levelUp();
+    }
   }
 
   /**

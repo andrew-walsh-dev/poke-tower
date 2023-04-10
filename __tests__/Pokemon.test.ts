@@ -50,15 +50,13 @@ describe("Pokemon", () => {
   });
 
   describe("levelUp", () => {
-    it("should increase the level and exp", () => {
+    it("should increase the level", () => {
       const initialLevel = samplePokemon.getLevel();
       const newLevel = initialLevel + 1;
-      const newExp = Pokemon.expForLevel(newLevel);
 
       samplePokemon.levelUp();
 
       expect(samplePokemon.getLevel()).toBe(newLevel);
-      expect(samplePokemon.getExp()).toBe(newExp);
     });
   });
 

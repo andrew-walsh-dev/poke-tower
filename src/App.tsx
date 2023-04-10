@@ -17,7 +17,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/home" element={<Home party={game.getPlayerParty()} play={game.play} />} />
           <Route path="/starter" element={<ChooseStarter setStarter={game.addPokemonToPlayerParty} />} />
-          <Route path="/party" element={<Party party={game.getPlayerParty()}  />} />
+          <Route path="/party" element={<Party party={game.getPlayerParty()} healPlayerParty={game.healPlayerParty
+          } />} />
         </Routes>
       </div>
     </Router>

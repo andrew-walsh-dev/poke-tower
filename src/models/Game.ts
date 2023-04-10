@@ -35,6 +35,7 @@ class Game {
         );
         console.log("Returning to home...");
         gameOver = true;
+        this.currentFloor = 1;
       }
     }
   }
@@ -49,12 +50,36 @@ class Game {
     const winner = await battle.getWinner();
 
     if (winner === "player") {
+      this.giveTeamExpGains(this.playerParty, nextOpponents);
       console.log("Player wins the battle!");
     } else if (winner === "opponent") {
       console.log("Opponent wins the battle!");
     }
 
     return winner;
+  }
+
+  public giveTeamExpGains(playerParty: Pokemon[], opponents: Pokemon[]): void {
+    const averageEnemyLevel: number = this.getAverageTeamLevel(opponents);
+    const expToGain: number = Pokemon.calculateExpGained(100, averageEnemyLevel);
+    for (const teamMember of playerParty) {
+      teamMember.gainExp(expToGain);
+    }
+  }
+
+  public getAverageTeamLevel(team: Pokemon[]): number {
+    let sum = 0;
+    for (let pokemon of team) {
+      sum += pokemon.getLevel();
+    }
+    return sum / team.length;
+  }
+
+  healPlayerParty = (): void => {
+    for (const pokemon of this.getPlayerParty()) {
+      let maxHP: number = pokemon.getMaxHP();
+      pokemon.setCurrentHP(maxHP);
+    }
   }
 
   public getCurrentFloor(): number {

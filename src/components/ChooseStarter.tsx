@@ -13,10 +13,18 @@ export default function ChooseStarter({ setStarter }: StarterProps): JSX.Element
     const starterPokemon: Pokemon[] = Pokemon.getStarters(moves);
     const navigate = useNavigate();
 
-    const handleCardClick = (pokemon: Pokemon) => {
+    const handleCardClick = (pokemon: Pokemon): void => {
+        levelStarterToFive(pokemon);
         setStarter(pokemon);
         navigate('/home');
     };
+
+    const levelStarterToFive = (pokemon: Pokemon): void => {
+        while (pokemon.getLevel() < 5) {
+            pokemon.levelUp();
+        }
+        pokemon.setExp(Pokemon.expForLevel(5));
+    }
 
     return (
         <>
