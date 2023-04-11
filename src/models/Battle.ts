@@ -63,9 +63,8 @@ class Battle {
       move.getType(),
       defender.getType()
     );
-    const attackMultiplier: number = 1 + 0.01 * attacker.getAttack();
     const adjustedDamage: number =
-      baseMovePower * attackMultiplier * effectivenessMultiplier;
+      (baseMovePower + attacker.getAttack()) * effectivenessMultiplier;
     return adjustedDamage;
   }
 

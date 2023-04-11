@@ -162,4 +162,13 @@ describe("Battle", () => {
 
     expect(damage2).toBeGreaterThan(damage1);
   });
+  test("Pokemon should be able to attack and deal damage", () => {
+    const attacker = playerTeam[0];
+    const defender = opponentTeam[0];
+    const move = attacker.getMoveset()[0];
+    const battle = new Battle(playerTeam, opponentTeam);
+    const initialDefenderHP = defender.getCurrentHP();
+    (battle as any).applyDamage(attacker, defender, move);
+    expect(defender.getCurrentHP()).toBeLessThan(initialDefenderHP);
+  });
 });
