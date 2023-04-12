@@ -85,7 +85,7 @@ class Battle {
    * @param defenders An array of defending Pokemon.
    * @returns An object containing the best move and the target defender.
    */
-  private getBestMove(
+   private getBestMove(
     attacker: Pokemon,
     defenders: Pokemon[]
   ): { move: Move; target: Pokemon } {
@@ -93,9 +93,12 @@ class Battle {
     let bestMove: Move = moveset[0];
     let targetDefender: Pokemon = defenders[0];
     let maxDamage: number = 0;
-
+  
     for (const move of moveset) {
-      for (const defender of defenders) {
+      // Only consider non-fainted defenders
+      const nonFaintedDefenders = defenders.filter((defender) => !defender.isFainted());
+  
+      for (const defender of nonFaintedDefenders) {
         const potentialDamage = this.getPotentialDamage(
           attacker,
           defender,
@@ -110,6 +113,7 @@ class Battle {
     }
     return { move: bestMove, target: targetDefender };
   }
+  
 
   /**
 
@@ -162,26 +166,35 @@ Checks if all Pokemon on a team have fainted.
     }
   }
 
+  private getNextAttacker(team: Pokemon[], attackerIndex: number): number {
+    const teamSize = team.length;
+    let nextAttackerIndex = (attackerIndex + 1) % teamSize;
+  
+    while (team[nextAttackerIndex].isFainted()) {
+      nextAttackerIndex = (nextAttackerIndex + 1) % teamSize;
+    }
+  
+    return nextAttackerIndex;
+  }
+
   /**
    * Executes a turn in the battle, with the current attacker using their best move against the target defender.
    */
-  private doTurn(): void {
+   private doTurn(): void {
     if (this.turn === "player") {
       const attacker: Pokemon = this.playerTeam[this.playerAttackerIndex];
       const moveInfo = this.getBestMove(attacker, this.opponentTeam);
       this.applyDamage(attacker, moveInfo.target, moveInfo.move);
-      this.playerAttackerIndex =
-        (this.playerAttackerIndex + 1) % this.playerTeam.length;
+      this.playerAttackerIndex = this.getNextAttacker(this.playerTeam, this.playerAttackerIndex);
       this.turn = "opponent";
     } else {
       const attacker: Pokemon = this.opponentTeam[this.opponentAttackerIndex];
       const moveInfo = this.getBestMove(attacker, this.playerTeam);
       this.applyDamage(attacker, moveInfo.target, moveInfo.move);
-      this.opponentAttackerIndex =
-        (this.opponentAttackerIndex + 1) % this.opponentTeam.length;
+      this.opponentAttackerIndex = this.getNextAttacker(this.opponentTeam, this.opponentAttackerIndex);
       this.turn = "player";
     }
-  }
+  } 
 }
 
 export default Battle;
